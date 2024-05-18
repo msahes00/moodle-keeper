@@ -31,15 +31,19 @@ docker run -it --rm -v ./data:/data moodle-keeper moodle-dl --config
 ```sh
 docker run -it --rm -v ./data:/data moodle-keeper moodle-dl
 ```
-* Periodically. By default is every day at midnight
+
+* Periodically in the backround.
 ```sh
-docker run -it --rm -v ./data:/data moodle-keeper
+docker run -d --restart=unless-stopped -v ./data:/data moodle-keeper
 ```
-* At a custom interval. This example will update it once every minute
+> By default is every day at midnight  
+> The container will always restart until you manually stop it
+
+To specify the interval manually, add the `cron_schedule` environment variable with it.  
+Below is an example for running the update once every minute
 ```sh
-docker run -it --rm -v ./data:/data -e cron_schedule="* * * * *" moodle-keeper
+docker run -d --restart=unless-stopped -v ./data:/data -e cron_schedule="* * * * *" moodle-keeper
 ```
-> The container uses cron internally to manage the intervals.  
 > Here is a helper tool for choosing the intervals [crontab.guru](https://crontab.guru/)
 
 ## License
