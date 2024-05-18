@@ -39,10 +39,10 @@ docker run -d --restart=unless-stopped -v ./data:/data moodle-keeper
 > By default is every day at midnight  
 > The container will always restart until you manually stop it
 
-To specify the interval manually, add the `cron_schedule` environment variable with it.  
+To specify the interval manually, add the `CRON_SCHEDULE` environment variable with it.  
 Below is an example for running the update once every minute
 ```sh
-docker run -d --restart=unless-stopped -v ./data:/data -e cron_schedule="* * * * *" moodle-keeper
+docker run -d --restart=unless-stopped -v ./data:/data -e CRON_SCHEDULE="* * * * *" moodle-keeper
 ```
 > Here is a helper tool for choosing the intervals [crontab.guru](https://crontab.guru/)
 

@@ -5,8 +5,8 @@ command=$1
 shift
 
 # set the default cron schedule (every day at midnight)
-if [ -z "$cron_schedule" ]; then
-	cron_schedule="0 0 * * *"
+if [ -z "$CRON_SCHEDULE" ]; then
+	CRON_SCHEDULE="0 0 * * *"
 fi
 
 
@@ -18,11 +18,11 @@ if [ "$command" = "moodle-dl" ]; then
 # or start the cron job
 else
 
-	echo "Setting up cron job with schedule: $cron_schedule"
+	echo "Setting up cron job with schedule: $CRON_SCHEDULE"
 	echo
 
 	# write the cron job to the crontab
-	echo "$cron_schedule moodle-dl" | crontab -
+	echo "$CRON_SCHEDULE moodle-dl" | crontab -
 
 	# start the cron daemon in the foreground
 	crond -f
