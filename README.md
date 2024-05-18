@@ -10,7 +10,7 @@ To use moodle-keeper, follow these steps:
 
 1. Clone the repository:
 ```sh
-git clone https://github.com/msahes00/moodle-keeper.git`
+git clone https://github.com/msahes00/moodle-keeper.git
 ```
 
 2. Build the image and tag it:
