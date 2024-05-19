@@ -1,8 +1,10 @@
 #!/bin/sh
 
-# get the first argument and shift it
+# store the first argument
 command=$1
-shift
+if [ $# -gt 0 ]; then
+	shift
+fi
 
 # set the default cron schedule (every day at midnight)
 if [ -z "$CRON_SCHEDULE" ]; then
@@ -22,7 +24,7 @@ else
 	echo
 
 	# write the cron job to the crontab
-	echo "$CRON_SCHEDULE moodle-dl" | crontab -
+	echo "$CRON_SCHEDULE /app/main.sh" | crontab -
 
 	# start the cron daemon in the foreground
 	crond -f
