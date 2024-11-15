@@ -8,31 +8,40 @@ moodle-keeper is a simple wrapper around [Moodle-dl](https://github.com/C0D3D3V/
 ## Usage
 To use moodle-keeper, follow these steps:
 
-1. Clone the repository:
-```sh
-git clone https://github.com/msahes00/moodle-keeper.git
-```
+#### 1. Obtain the image
+Currently there are two ways to obtain the image: building or pulling a prebuilt one
+* Build the image manually
 
-2. Build the image and tag it:
 ```sh
+# Clone the repository and cd into it
+git clone https://github.com/msahes00/moodle-keeper.git
+cd moodle-keeper
+
+# Build the image and tag it
 docker build -t moodle-keeper .
 ```
+* Or pull the prebuit image
+```sh
+docker pull ghcr.io/msahes00/moodle-keeper:latest
+```
+> **IMPORTANT**: if you pull the image, use `ghcr.io/msahes00/moodle-keeper:latest`  
+> rather than `moodle-keeper` in the commands below
 
-3. Create the configuration for moodle-dl:
+#### 2. Create the configuration for moodle-dl:
 > For more details refer to the [Moodle-dl](https://github.com/C0D3D3V/Moodle-DL#readme) documentation
 ```sh
 docker run -it --rm -v ./data:/data moodle-keeper moodle-dl --init
 docker run -it --rm -v ./data:/data moodle-keeper moodle-dl --config
 ```
 
-4. Run moodle-dl
+#### 3. Run moodle-dl
 	
 * Once
 ```sh
 docker run -it --rm -v ./data:/data moodle-keeper moodle-dl
 ```
 
-* Periodically in the backround.
+* Periodically in the background.
 ```sh
 docker run -d --restart=unless-stopped -v ./data:/data moodle-keeper
 ```
