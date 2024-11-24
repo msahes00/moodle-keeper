@@ -1,0 +1,2 @@
+APScheduler==3.10.4
+moodle-dl==2.3.13
